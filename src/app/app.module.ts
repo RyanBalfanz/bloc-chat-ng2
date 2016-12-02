@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ChannelListComponent } from './channel-list/channel-list.component';
+import { ChannelItemComponent } from './channel-item/channel-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChannelListComponent
+    ChannelListComponent,
+    ChannelItemComponent
   ],
   imports: [
     BrowserModule,
