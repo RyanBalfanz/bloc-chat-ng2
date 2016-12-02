@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
 
 @Component({
   selector: 'app-channel-item',
@@ -6,11 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channel-item.component.css']
 })
 export class ChannelItemComponent implements OnInit {
-  name: string;
+  @Input() name: string;
 
-  constructor() {
-    this.name = 'Name';
-  }
+  constructor() { }
 
   ngOnInit() {
   }
