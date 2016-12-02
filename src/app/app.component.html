@@ -5,7 +5,11 @@
     <h3>Add a Channel</h3>
     <div>
       <label for="name">Name:</label>
-      <input name="name">
+      <input name="name" #newname>
     </div>
+
+    <button (click)="addChannel(newname)">
+      Create channel
+    </button>
   </form>
 </h1>
