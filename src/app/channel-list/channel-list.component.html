@@ -1,3 +1,6 @@
 <ul>
   <li *ngFor="let channel of channels">{{ channel }}</li>
+  <app-channel-item
+    *ngFor="let channel of channels">
+  </app-channel-item>
 </ul>
