@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channel-item.component.css']
 })
 export class ChannelItemComponent implements OnInit {
+  name: string;
 
-  constructor() { }
+  constructor() {
+    this.name = 'Name';
+  }
 
   ngOnInit() {
   }
