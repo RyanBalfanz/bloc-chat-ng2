@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channel-list.component.css']
 })
 export class ChannelListComponent implements OnInit {
+  channels: string[];
 
-  constructor() { }
+  constructor() {
+    this.channels = ['Alpha', 'Beta', 'Gamma'];
+  }
 
   ngOnInit() {
   }
