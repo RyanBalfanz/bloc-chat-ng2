@@ -12,4 +12,11 @@
       Create channel
     </button>
   </form>
+
+  <ul>
+    <li
+      *ngFor="let channel of channels">
+      Channel {{ channel.name }}
+    </li>
+  </ul>
 </h1>
