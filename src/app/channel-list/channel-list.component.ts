@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
+
+import { Channel } from '../channel.model';
 
 @Component({
   selector: 'app-channel-list',
@@ -6,11 +12,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channel-list.component.css']
 })
 export class ChannelListComponent implements OnInit {
-  channels: string[];
+  @Input() channels: Channel[];
 
-  constructor() {
-    this.channels = ['Alpha', 'Beta', 'Gamma'];
-  }
+  constructor() { }
 
   ngOnInit() {
   }

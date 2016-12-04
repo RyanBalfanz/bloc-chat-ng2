@@ -13,12 +13,7 @@
     </button>
   </form>
 
-  <ul>
-    <li
-      *ngFor="let channel of channels">
-      Channel {{ channel.name }}
-    </li>
-  </ul>
-
-  <app-channel-list></app-channel-list>
+  <app-channel-list
+    [channels]="channels">
+  </app-channel-list>
 </h1>
