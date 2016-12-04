@@ -1,5 +1,19 @@
 <h1>
   {{title}}
 
-  <app-channel-list></app-channel-list>
+  <form>
+    <h3>Add a Channel</h3>
+    <div>
+      <label for="name">Name:</label>
+      <input name="name" #newname>
+    </div>
+
+    <button (click)="addChannel(newname)">
+      Create channel
+    </button>
+  </form>
+
+  <app-channel-list
+    [channels]="channels">
+  </app-channel-list>
 </h1>
