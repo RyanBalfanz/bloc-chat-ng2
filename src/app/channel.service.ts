@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 
+import {
+  AngularFire,
+  FirebaseListObservable
+} from 'angularfire2';
+
 import { Channel } from './channel.model';
 import { ChannelFactory } from './channel.factory';
-import { CHANNELS } from './mock-channels';
 
 @Injectable()
 export class ChannelService {
+  channels: FirebaseListObservable<Channel[]>;
 
-  constructor(private ChannelFactory: ChannelFactory) {}
+  constructor(private angularFire: AngularFire, private ChannelFactory: ChannelFactory) {
+    this.channels = angularFire.database.list('/channels');
+  }
 
-  addChannel(channelInfo: any): boolean {
+  addChannel(channelInfo: Channel): boolean {
     let newChannel = this.ChannelFactory.create(channelInfo);
-    CHANNELS.push(newChannel);
+    this.channels.push(newChannel);
     return true;
   }
 
-  getChannels(): Channel[] {
-    return CHANNELS;
-    // return Promise.resolve(CHANNELS);
+  getChannels(): FirebaseListObservable<Channel[]> {
+    return this.channels;
   }
 }

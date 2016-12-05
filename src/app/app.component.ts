@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { FirebaseListObservable } from 'angularfire2';
+
 import { Channel } from './channel.model';
 import { ChannelService } from './channel.service';
 
@@ -11,7 +13,7 @@ import { ChannelService } from './channel.service';
 })
 export class AppComponent {
   title = 'app works!';
-  channels: Channel[] = [];
+  channels: FirebaseListObservable<Channel[]>;
 
   constructor(private channelService: ChannelService) {
     this.channels = channelService.getChannels();
