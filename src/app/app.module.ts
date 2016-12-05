@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ChannelFactory } from './channel.factory';
 import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelItemComponent } from './channel-item/channel-item.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBOfR3VVMOJstKuar19gIshoU1dCTylXa4',
@@ -21,7 +22,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     ChannelListComponent,
-    ChannelItemComponent
+    ChannelItemComponent,
+    MessageListComponent
   ],
   imports: [
     BrowserModule,
