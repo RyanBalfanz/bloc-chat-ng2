@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getChannels();
+  }
+
+  private getChannels(): void {
     this.channels = this.channelService.getChannels();
   }
 }
