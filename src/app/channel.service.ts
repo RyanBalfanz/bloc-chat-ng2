@@ -13,7 +13,8 @@ export class ChannelService {
   channels: FirebaseListObservable<Channel[]>;
 
   constructor(private angularFire: AngularFire, private ChannelFactory: ChannelFactory) {
-    this.channels = angularFire.database.list('/channels');
+    this.angularFire = angularFire;
+    this.init();
   }
 
   addChannel(channelInfo: Channel): boolean {
@@ -24,5 +25,9 @@ export class ChannelService {
 
   getChannels(): FirebaseListObservable<Channel[]> {
     return this.channels;
+  }
+
+  private init(): void {
+    this.channels = this.angularFire.database.list('/channels');
   }
 }
