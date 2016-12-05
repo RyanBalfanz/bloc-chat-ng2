@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FirebaseListObservable } from 'angularfire2';
 
@@ -11,13 +11,11 @@ import { ChannelService } from './channel.service';
   styleUrls: ['./app.component.css'],
   providers: [ChannelService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app works!';
   channels: FirebaseListObservable<Channel[]>;
 
-  constructor(private channelService: ChannelService) {
-    this.channels = channelService.getChannels();
-  }
+  constructor(private channelService: ChannelService) { }
 
   addChannel(name: HTMLInputElement): boolean {
     console.log(`Adding channel name: ${name.value}`);
@@ -25,5 +23,9 @@ export class AppComponent {
       name: name.value
     });
     return true;
+  }
+
+  ngOnInit() {
+    this.channels = this.channelService.getChannels();
   }
 }
