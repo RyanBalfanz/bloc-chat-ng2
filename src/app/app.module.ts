@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { ChannelFactory } from './channel.factory';
+import { MessageFactory } from './message.factory';
 import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelItemComponent } from './channel-item/channel-item.component';
 import { MessageListComponent } from './message-list/message-list.component';
@@ -31,7 +32,7 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ChannelFactory],
+  providers: [ChannelFactory, MessageFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
