@@ -1,3 +1,9 @@
-<p>
-  message-list works!
-</p>
+<ul>
+  <li
+    *ngFor="let message of messages">
+    <dl>
+      <dt>{{ message.createdAt | date }}</dt>
+      <dd>{{ message.content }}</dd>
+    </dl>
+  </li>
+</ul>
