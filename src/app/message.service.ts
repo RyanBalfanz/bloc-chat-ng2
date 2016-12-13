@@ -13,13 +13,9 @@ import { MessageFactory } from './message.factory';
 
 @Injectable()
 export class MessageService {
-  private limitToLast: Subject<any>;
   private orderByKey: boolean = true;
 
-  constructor(private angularFire: AngularFire, private messageFactory: MessageFactory) {
-    this.limitToLast = new Subject();
-    this.init();
-  }
+  constructor(private angularFire: AngularFire, private messageFactory: MessageFactory) { }
 
   addMessage(channelId: string, content: string): boolean {
     let newMessage = this.messageFactory.create({
@@ -38,7 +34,6 @@ export class MessageService {
   getMessages(): FirebaseListObservable<Message[]> {
     console.log('Getting messages');
     const query = {
-      limitToLast: this.limitToLast,
       orderByKey: this.orderByKey,
     };
     return this.angularFire.database.list('/messages', { query: query });
@@ -49,19 +44,9 @@ export class MessageService {
     const orderByChild = 'channelId';
     const query = {
       equalTo: channelId,
-      limitToLast: this.limitToLast,
       orderByChild: orderByChild,
     };
     return this.angularFire.database.list('/messages', { query: query });
   }
 
-  private init(): void {
-    const limitToLast = 10;
-    this.setLimitToLast(limitToLast);
-    setTimeout(() => { this.setLimitToLast(limitToLast); });
-  }
-
-  private setLimitToLast(n: number): void {
-    this.limitToLast.next(n);
-  }
 }

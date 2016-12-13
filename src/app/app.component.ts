@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   title = 'app works!';
   channels: FirebaseListObservable<Channel[]>;
   messages: FirebaseListObservable<Message[]>;
-  private channelId: string = '-KYh6G2355fNnMhL6Z2l';
+  selectedChannelId: string | null = null;
 
   constructor(private channelService: ChannelService, private messageService: MessageService) { }
 
@@ -34,20 +34,28 @@ export class AppComponent implements OnInit {
     return true;
   }
 
+  addMessage(content: HTMLInputElement): boolean {
+    console.log(`Adding message content: ${content.value}`);
+    this.messageService.addMessage(this.selectedChannelId, content.value);
+    return true;
+  }
+
   ngOnInit(): void {
     this.getChannels();
-    this.getMessages(this.channelId);
+    this.getMessages();
+  }
+
+  selectChannel(channelId: string): void {
+    console.log(`Select channel ${channelId}`);
+    this.selectedChannelId = channelId;
+    this.getMessages();
   }
 
   private getChannels(): void {
     this.channels = this.channelService.getChannels();
   }
 
-  private getMessages(channelId?: string | null): void {
-    if (channelId) {
-      this.messages = this.messageService.getMessagesByChannel(channelId);
-    } else {
-      this.messages = this.messageService.getMessages();
-    }
+  private getMessages(): void {
+    this.messages = this.messageService.getMessagesByChannel(this.selectedChannelId);
   }
 }
