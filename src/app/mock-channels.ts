@@ -1,7 +1,9 @@
 import { Channel } from './channel.model';
 
+const now = new Date().getTime();
+
 export const CHANNELS: Channel[] = [
-  {name: 'Alpha'},
-  {name: 'Beta'},
-  {name: 'Gamma'},
+  {createdAt: now, name: 'Alpha'},
+  {createdAt: now, name: 'Beta'},
+  {createdAt: now, name: 'Gamma'},
 ];
