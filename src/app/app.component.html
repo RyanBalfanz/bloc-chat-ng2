@@ -1,6 +1,6 @@
 <h1>
   {{title}}
-
+  {{ channelId }}
   <form>
     <h3>Add a Channel</h3>
     <div>
@@ -13,10 +13,18 @@
     </button>
   </form>
 
+  <select [(ngModel)]="selectedChannelId" (ngModelChange)="selectChannel($event)">
+    <option value="">Select a Channel</option>
+    <option
+      *ngFor="let channel of channels | async"
+      [ngValue]="channel.$key">
+      {{ channel.name }}
+    </option>
+  </select>
+
   <app-channel-list
     [channels]="channels | async">
   </app-channel-list>
-</h1>
 
   <app-message-list
     [messages]="messages | async">
