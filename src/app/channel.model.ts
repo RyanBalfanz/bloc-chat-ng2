@@ -1,7 +1,16 @@
-export class Channel {
-  name: string;
+interface ChannelFieldsInterface {
+  createdAt?: number;
+  name?: string;
+}
 
-  constructor(channelInfo: any) {
-    this.name = channelInfo.name;
+export class Channel {
+  createdAt: number = null;
+  name: string = '';
+
+  constructor(fields?: ChannelFieldsInterface) {
+    if (fields) {
+      this.createdAt = fields.createdAt || this.createdAt;
+      this.name = fields.name || this.name;
+    }
   }
 }

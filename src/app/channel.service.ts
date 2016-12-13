@@ -17,7 +17,7 @@ export class ChannelService {
     this.init();
   }
 
-  addChannel(channelInfo: Channel): boolean {
+  addChannel(channelInfo: Object): boolean {
     let newChannel = this.ChannelFactory.create(channelInfo);
     this.channels.push(newChannel);
     return true;
