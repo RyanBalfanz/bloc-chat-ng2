@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { ChannelFactory } from './channel.factory';
 import { MessageFactory } from './message.factory';
 import { ChannelListComponent } from './channel-list/channel-list.component';
@@ -30,6 +32,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [ChannelFactory, MessageFactory],
