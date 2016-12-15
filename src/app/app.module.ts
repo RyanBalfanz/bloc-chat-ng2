@@ -8,10 +8,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { ChannelFactory } from './channel.factory';
+import { ChannelsModule } from './channels/channels.module';
+
 import { MessageFactory } from './message.factory';
-import { ChannelListComponent } from './channel-list/channel-list.component';
-import { ChannelItemComponent } from './channel-item/channel-item.component';
 import { MessageListComponent } from './message-list/message-list.component';
 
 export const firebaseConfig = {
@@ -24,18 +23,17 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    ChannelListComponent,
-    ChannelItemComponent,
-    MessageListComponent
+    MessageListComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    ChannelsModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ChannelFactory, MessageFactory],
+  providers: [MessageFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

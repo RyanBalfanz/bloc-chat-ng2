@@ -7,8 +7,7 @@ import {
   FirebaseListObservable,
 } from 'angularfire2';
 
-import { Channel } from './channel.model';
-import { ChannelService } from './channel.service';
+import { ChannelService } from './channels/channel.service';
 import { Message } from './message.model';
 import { MessageService } from './message.service';
 
@@ -16,11 +15,10 @@ import { MessageService } from './message.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ChannelService, MessageService]
+  providers: [MessageService]
 })
 export class AppComponent implements OnInit {
   title = 'app works!';
-  channels: FirebaseListObservable<Channel[]>;
   messages: FirebaseListObservable<Message[]>;
   selectedChannelId: string | null = null;
 
@@ -41,7 +39,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getChannels();
     this.getMessages();
   }
 
@@ -49,10 +46,6 @@ export class AppComponent implements OnInit {
     console.log(`Select channel ${channelId}`);
     this.selectedChannelId = channelId;
     this.getMessages();
-  }
-
-  private getChannels(): void {
-    this.channels = this.channelService.getChannels();
   }
 
   private getMessages(): void {
