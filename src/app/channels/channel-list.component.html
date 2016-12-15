@@ -1,6 +1,6 @@
 <ul>
   <app-channel-item
-    *ngFor="let channel of channels"
+    *ngFor="let channel of channels | async"
     [name]="channel.name">
   </app-channel-item>
 </ul>
