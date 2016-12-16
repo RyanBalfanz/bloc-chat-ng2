@@ -1,29 +1,5 @@
-<h1>
-  {{title}}
-  <nav>
-    <a routerLink="/channels" routerLinkActive="active">Channels</a>
-  </nav>
-  <router-outlet></router-outlet>
-  <!-- <form>
-    <h3>Add a Channel</h3>
-    <div>
-      <label for="name">Name:</label>
-      <input name="name" #newname>
-    </div>
-
-    <button (click)="addChannel(newname)">
-      Create channel
-    </button>
-  </form> -->
-
-  <!-- <form>
-    <h3>Add a Message</h3>
-    <div>
-      <label for="messageContent">Content:</label>
-      <input type="text" name="messageContent" #newcontent>
-    </div>
-    <button (click)="addMessage(newcontent)">
-      Add message
-    </button>
-  </form> -->
-</h1>
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/channels" routerLinkActive="active">Channels</a>
+</nav>
+<router-outlet></router-outlet>
