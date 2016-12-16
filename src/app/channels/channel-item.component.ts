@@ -37,4 +37,9 @@ export class ChannelItemComponent implements OnInit {
       });
   }
 
+  addMessage(content: HTMLInputElement): void {
+    this.messageService.addMessage(this.channel.$key, content.value);
+    content.value = '';
+  }
+
 }
