@@ -11,7 +11,7 @@
       *ngFor="let channel of channels | async; let i = index;"
       (click)="onSelect(channel.$key)">
       <th scope="row">{{ i + 1 }}</th>
-      <td><span class="badge">{{ channel.$key }}</span> {{ channel.name }}</td>
+      <td><button class="btn btn-link">{{ channel.name }}</button></td>
     </tr>
   </tbody>
 </table>
