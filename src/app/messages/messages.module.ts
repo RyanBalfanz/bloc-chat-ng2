@@ -18,6 +18,7 @@ import { MessageRoutingModule } from './messages-routing.module';
   declarations: [
     MessageListComponent
   ],
+  exports: [ MessageListComponent ],
   providers: [
     MessageFactory,
     MessageService
