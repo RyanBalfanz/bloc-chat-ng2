@@ -1,12 +1,20 @@
 <h1>Channels</h1>
-<ul>
-  <li
-    *ngFor="let channel of channels | async"
-    routerLinkActive="active"
-    (click)="onSelect(channel.$key)">
-    <span class="badge">{{ channel.$key }}</span> {{ channel.name }}
-  </li>
-</ul>
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let channel of channels | async; let i = index;"
+      (click)="onSelect(channel.$key)">
+      <th scope="row">{{ i + 1 }}</th>
+      <td><span class="badge">{{ channel.$key }}</span> {{ channel.name }}</td>
+    </tr>
+  </tbody>
+</table>
 <!-- <form>
   <h3>Add a Channel</h3>
   <div>
