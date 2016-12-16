@@ -19,7 +19,7 @@ import { MessageService } from '../messages/message.service';
   styleUrls: ['./channel-item.component.css']
 })
 export class ChannelItemComponent implements OnInit {
-  channel: FirebaseObjectObservable<any>;
+  channel: FirebaseObjectObservable<any> | any;
   messages: FirebaseListObservable<any[]>;
 
   constructor(
