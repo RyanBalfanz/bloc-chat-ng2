@@ -9,9 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ChannelsModule } from './channels/channels.module';
-
-import { MessageFactory } from './message.factory';
-import { MessageListComponent } from './message-list/message-list.component';
+import { MessagesModule } from './messages/messages.module';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBOfR3VVMOJstKuar19gIshoU1dCTylXa4',
@@ -23,7 +21,6 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    MessageListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +28,10 @@ export const firebaseConfig = {
     HttpModule,
     AppRoutingModule,
     ChannelsModule,
+    MessagesModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [MessageFactory],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

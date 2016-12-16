@@ -4,6 +4,7 @@ interface ChannelFieldsInterface {
 }
 
 export class Channel {
+  // $key: string | null = null;
   createdAt: number = null;
   name: string = '';
 

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import {
   AngularFire,
-  FirebaseListObservable
+  FirebaseListObservable,
+  FirebaseObjectObservable
 } from 'angularfire2';
 
 import { Channel } from './channel.model';
@@ -21,6 +22,10 @@ export class ChannelService {
     let newChannel = this.ChannelFactory.create(channelInfo);
     this.channels.push(newChannel);
     return true;
+  }
+
+  getChannel(channelId: string): FirebaseObjectObservable<any> {
+    return this.angularFire.database.object(`/channels/${channelId}`);
   }
 
   getChannels(): FirebaseListObservable<Channel[]> {
