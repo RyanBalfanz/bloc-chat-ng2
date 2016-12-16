@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AngularFireModule } from 'angularfire2';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,7 +31,8 @@ export const firebaseConfig = {
     AppRoutingModule,
     ChannelsModule,
     MessagesModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
