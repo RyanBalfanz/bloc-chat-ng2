@@ -1,6 +1,8 @@
 <ul>
-  <app-channel-item
+  <li
     *ngFor="let channel of channels | async"
-    [name]="channel.name">
-  </app-channel-item>
+    routerLinkActive="active"
+    (click)="onSelect(channel.$key)">
+    <span class="badge">{{ channel.$key }}</span> {{ channel.name }}
+  </li>
 </ul>

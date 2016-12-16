@@ -8,8 +8,8 @@ import {
 } from 'angularfire2';
 
 import { ChannelService } from './channels/channel.service';
-import { Message } from './message.model';
-import { MessageService } from './message.service';
+import { Message } from './messages/message.model';
+import { MessageService } from './messages/message.service';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +19,7 @@ import { MessageService } from './message.service';
 })
 export class AppComponent implements OnInit {
   title = 'app works!';
-  messages: FirebaseListObservable<Message[]>;
-  selectedChannelId: string | null = null;
+  // messages: FirebaseListObservable<Message[]>;
 
   constructor(private channelService: ChannelService, private messageService: MessageService) { }
 
@@ -32,23 +31,23 @@ export class AppComponent implements OnInit {
     return true;
   }
 
-  addMessage(content: HTMLInputElement): boolean {
-    console.log(`Adding message content: ${content.value}`);
-    this.messageService.addMessage(this.selectedChannelId, content.value);
-    return true;
-  }
+  // addMessage(content: HTMLInputElement): boolean {
+  //   console.log(`Adding message content: ${content.value}`);
+  //   // this.messageService.addMessage(this.selectedChannelId, content.value);
+  //   return true;
+  // }
 
   ngOnInit(): void {
-    this.getMessages();
+    // this.getMessages();
   }
 
-  selectChannel(channelId: string): void {
-    console.log(`Select channel ${channelId}`);
-    this.selectedChannelId = channelId;
-    this.getMessages();
-  }
+  // selectChannel(channelId: string): void {
+  //   console.log(`Select channel ${channelId}`);
+  //   // this.selectedChannelId = channelId;
+  //   this.getMessages();
+  // }
 
-  private getMessages(): void {
-    this.messages = this.messageService.getMessagesByChannel(this.selectedChannelId);
-  }
+  // private getMessages(): void {
+  //   this.messages = this.messageService.getMessagesByChannel(this.selectedChannelId);
+  // }
 }

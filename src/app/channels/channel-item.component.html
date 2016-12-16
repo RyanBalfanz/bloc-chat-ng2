@@ -1,3 +1,5 @@
-<p>
-  Channel {{ name }}
-</p>
+<h2>Channel Item</h2>
+<pre>{{ channel | json }}</pre>
+<ol>
+  <li *ngFor="let message of messages | async">{{ message.content }}</li>
+</ol>

@@ -1,8 +1,10 @@
 <h1>
   {{title}}
-  {{ channelId }}
-   <router-outlet></router-outlet>
-  <form>
+  <nav>
+    <a routerLink="/channels" routerLinkActive="active">Channels</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <!-- <form>
     <h3>Add a Channel</h3>
     <div>
       <label for="name">Name:</label>
@@ -12,22 +14,9 @@
     <button (click)="addChannel(newname)">
       Create channel
     </button>
-  </form>
+  </form> -->
 
-  <select [(ngModel)]="selectedChannelId" (ngModelChange)="selectChannel($event)">
-    <option value="">Select a Channel</option>
-    <option
-      *ngFor="let channel of channels | async"
-      [ngValue]="channel.$key">
-      {{ channel.name }}
-    </option>
-  </select>
-
-  <app-message-list
-    [messages]="messages | async">
-  </app-message-list>
-
-  <form>
+  <!-- <form>
     <h3>Add a Message</h3>
     <div>
       <label for="messageContent">Content:</label>
@@ -36,5 +25,5 @@
     <button (click)="addMessage(newcontent)">
       Add message
     </button>
-  </form>
+  </form> -->
 </h1>
