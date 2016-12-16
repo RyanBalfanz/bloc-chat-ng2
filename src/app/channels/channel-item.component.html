@@ -3,3 +3,13 @@
 <ol>
   <li *ngFor="let message of messages | async">{{ message | json }}</li>
 </ol>
+<!-- <form>
+  <h3>Add a Message</h3>
+  <div>
+    <label for="messageContent">Content:</label>
+    <input type="text" name="messageContent" #newcontent>
+  </div>
+  <button (click)="addMessage(newcontent)">
+Add message
+</button>
+</form> -->
