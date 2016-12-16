@@ -1,12 +1,10 @@
 import {
   Component,
-  // Input,
   OnInit
 } from '@angular/core';
 
 import { FirebaseListObservable } from 'angularfire2';
 
-// import { Message } from './message.model';
 import { MessageService } from './message.service';
 
 @Component({
