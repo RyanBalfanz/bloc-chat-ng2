@@ -1,15 +1,19 @@
-<h1>Channel</h1>
-<pre>{{ channel | json }}</pre>
-<ol>
-  <li *ngFor="let message of messages | async">{{ message | json }}</li>
-</ol>
-<!-- <form>
-  <h3>Add a Message</h3>
-  <div>
-    <label for="messageContent">Content:</label>
-    <input type="text" name="messageContent" #newcontent>
-  </div>
-  <button (click)="addMessage(newcontent)">
-Add message
-</button>
-</form> -->
+<h1><span *ngIf="channel">{{ channel.name }}</span></h1>
+<ul>
+  <li *ngFor="let message of messages | async">
+    <blockquote class="blockquote">
+      <p class="mb-0">{{ message.content }}</p>
+      <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+    </blockquote>
+  </li>
+</ul>
+<form>
+  <fieldset>
+    <div class="form-group">
+      <!-- <label for="messageContent">Content</label> -->
+      <input type="text" class="form-control" name="messageContent" aria-describedby="messageContentHelp" placeholder="Enter message" #newcontent>
+      <small id="messageContentHelp" class="form-text text-muted">What do you want to say?</small>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addMessage(newcontent)">Submit</button>
+  </fieldset>
+</form>
