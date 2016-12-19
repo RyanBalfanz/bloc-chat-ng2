@@ -2,7 +2,7 @@
   <li
     *ngFor="let message of messages | async">
     <dl>
-      <dt>{{ message.createdAt | date }}</dt>
+      <dt>{{ message.userId }} at {{ message.createdAt | date }}</dt>
       <dd>{{ message.content }}</dd>
     </dl>
   </li>

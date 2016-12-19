@@ -10,15 +10,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthModule } from './auth/auth.module';
 import { ChannelsModule } from './channels/channels.module';
 import { MessagesModule } from './messages/messages.module';
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyBOfR3VVMOJstKuar19gIshoU1dCTylXa4',
-  authDomain: '<your-project-authdomain>',
-  databaseURL: 'https://bloc-chat-ng2.firebaseio.com/',
-  storageBucket: '<your-storage-bucket>'
-};
+import { FirebaseAuthConfig, FirebaseConfig } from './app-settings.module';
+
+const firebaseConfig = FirebaseConfig;
+const firebaseAuthConfig = FirebaseAuthConfig;
 
 @NgModule({
   declarations: [
@@ -29,9 +28,10 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    AuthModule,
     ChannelsModule,
     MessagesModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     NgbModule.forRoot()
   ],
   providers: [],

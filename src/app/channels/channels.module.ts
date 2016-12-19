@@ -4,6 +4,8 @@ import { FormsModule }    from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AuthModule } from '../auth/auth.module';
+import { AuthService } from '../auth/auth.service';
 import { MessagesModule } from '../messages/messages.module';
 
 import { ChannelListComponent }    from './channel-list.component';
@@ -19,6 +21,7 @@ import { ChannelsRoutingModule } from './channels-routing.module';
     CommonModule,
     FormsModule,
     NgbModule,
+    AuthModule,
     MessagesModule,
     ChannelsRoutingModule
   ],
@@ -27,6 +30,7 @@ import { ChannelsRoutingModule } from './channels-routing.module';
     ChannelItemComponent
   ],
   providers: [
+    AuthService,
     ChannelFactory,
     ChannelService
   ]

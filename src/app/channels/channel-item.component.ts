@@ -10,6 +10,7 @@ import {
   FirebaseListObservable
 } from 'angularfire2';
 
+import { AuthService } from '../auth/auth.service';
 import { ChannelService } from './channel.service';
 import { MessageService } from '../messages/message.service';
 
@@ -24,6 +25,7 @@ export class ChannelItemComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private authService: AuthService,
     private service: ChannelService,
     private messageService: MessageService
   ) { }
