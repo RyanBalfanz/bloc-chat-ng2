@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs/Subject';
-
 import {
   AngularFire,
   FirebaseListObservable,
   FirebaseObjectObservable
 } from 'angularfire2';
+
+import { AuthService } from '../auth/auth.service';
 
 import { Message } from './message.model';
 import { MessageFactory } from './message.factory';
@@ -15,14 +15,23 @@ import { MessageFactory } from './message.factory';
 export class MessageService {
   private orderByKey: boolean = true;
 
-  constructor(private angularFire: AngularFire, private messageFactory: MessageFactory) { }
+  constructor(
+    private angularFire: AngularFire,
+    private authService: AuthService,
+    private messageFactory: MessageFactory
+  ) { }
 
   addMessage(channelId: string, content: string): boolean {
-    let newMessage = this.messageFactory.create({
-      channelId: channelId,
-      content: content,
-    });
-    this.angularFire.database.list('/messages').push(newMessage);
+    if (this.authService.isAuthenticated()) {
+      let userId = this.authService.getUserId();
+      let newMessage = this.messageFactory.create({
+        userId: userId,
+        channelId: channelId,
+        content: content,
+      });
+      this.angularFire.database.list('/messages').push(newMessage);
+      return true;
+    }
     return false;
   }
 

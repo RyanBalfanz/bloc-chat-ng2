@@ -3,14 +3,14 @@
   <li *ngFor="let message of messages | async">
     <blockquote class="blockquote">
       <p class="mb-0">{{ message.content }}</p>
-      <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+      <footer class="blockquote-footer">{{ message.userId }} at <cite title="Source Title">{{ message.createdAt | date }}</cite></footer>
     </blockquote>
   </li>
 </ul>
 <form>
   <fieldset>
     <div class="form-group">
-      <!-- <label for="messageContent">Content</label> -->
+      <label for="messageContent">Posting as <span *ngIf="authService.isAuthenticated()">{{ authService.getUserId() }}</span></label>
       <input type="text" class="form-control" name="messageContent" aria-describedby="messageContentHelp" placeholder="Enter message" #newcontent>
       <small id="messageContentHelp" class="form-text text-muted">What do you want to say?</small>
     </div>
