@@ -7,14 +7,24 @@
           routerLink="/channels"
           routerLinkActive="active">Channels</a>
       </li>
+      <form *ngIf="!isAuthenticated()" class="form-inline float-lg-right">
+        <button class="btn btn-outline-success" type="submit" (click)="login()">Sign in</button>
+      </form>
+      <li *ngIf="isAuthenticated()" class="nav-item dropdown float-lg-right">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img
+            *ngIf="isAuthenticated()"
+            [src]="authService.getAuth().auth.photoURL"
+            [alt]="authService.getAuth().auth.displayName"
+            width="30" height="30" class="d-inline-block align-top">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <h6 class="dropdown-header"><strong>{{ authService.getAuth().auth.displayName }}</strong></h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" (click)="logout()">Sign out</a>
+        </div>
+      </li>
     </ul>
-    <form *ngIf="!isAuthenticated()" class="form-inline float-lg-right">
-      <button class="btn btn-outline-success" type="submit" (click)="login()">Sign In</button>
-    </form>
-    <form *ngIf="isAuthenticated()" class="form-inline float-lg-right">
-      <!-- <span class="navbar-text text-muted">Logged in as {{ auth.auth.displayName }}</span> -->
-      <button class="btn btn-outline-success" type="submit" (click)="logout()">Sign Out</button>
-    </form>
   </nav>
   <router-outlet></router-outlet>
 </div>
